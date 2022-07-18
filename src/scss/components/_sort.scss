@@ -19,6 +19,11 @@
       color: $orange;
       border-bottom: 1px dashed $orange;
       cursor: pointer;
+
+      &.active {
+        color: gray;
+        border-bottom: 1px dashed gray;
+      }
     }
   }
 

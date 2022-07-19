@@ -3,6 +3,19 @@
 .sort {
   position: relative;
 
+  @media (max-width:1302px) {
+    & {
+      margin-left: 30%;
+    }
+  }
+
+  @media (max-width:768px) {
+    & {
+      margin-left: 0;
+    }
+  }
+
+
   &__label {
     display: flex;
     align-items: center;
@@ -13,6 +26,12 @@
 
     b {
       margin-right: 8px;
+    }
+
+    @media (max-width:1302px) {
+      & {
+        margin-top: 20px;
+      }
     }
 
     span {

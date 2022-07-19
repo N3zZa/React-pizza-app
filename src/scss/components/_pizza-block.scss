@@ -9,6 +9,18 @@
     margin-right: 35px;
   }
 
+  @media (max-width:1148px) {
+    &:not(:nth-of-type(4n)) {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width:768px) {
+    & {
+      margin: 25px 35px;
+    }
+  }
+
   &__image {
     width: 260px;
   }
@@ -17,7 +29,7 @@
     font-size: 20px;
     font-weight: 900;
     letter-spacing: 1%;
-    margin-bottom: 20px;  
+    margin-bottom: 20px;
   }
 
   &__selector {
@@ -45,7 +57,7 @@
 
         &.active {
           background: #ffffff;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
           border-radius: 5px;
           cursor: auto;
         }
@@ -66,6 +78,7 @@
     line-height: 27px;
     letter-spacing: 0.015em;
   }
+
   button {
     span {
       margin-left: 5px;

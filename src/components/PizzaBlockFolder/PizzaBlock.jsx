@@ -14,6 +14,7 @@ const PizzaBlock = ({
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(sizes[0]);
 
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imageUrl} alt="Pizza" />

@@ -24,7 +24,7 @@ const PizzaBlock = ({
           {types.map((typeId, i) => (
             <li
               key={typeId}
-              onClick={() => setActiveType(typeId)}
+              onClick={() => setActiveType(i)}
               className={activeType === i ? "active" : ""}
             >
               {typeNames[typeId]}

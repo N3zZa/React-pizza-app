@@ -1,6 +1,14 @@
 @import '../variables.scss';
 
 .categories {
+  @media (max-width:786px) {
+    & {
+      display: inline-block;
+      overflow: scroll;
+      width: 500px;
+    }
+  }
+
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -8,9 +16,35 @@
 
     @media (max-width:1302px) {
       & {
+        margin-left: 130px;
         justify-content: center;
       }
     }
+
+    @media (max-width:1175px) {
+      & {
+        margin-left: 50px;
+        justify-content: center;
+      }
+    }
+
+
+    @media (max-width:1175px) {
+      & {
+        margin-left: 25px;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width:786px) {
+      & {
+        display: inline-block;
+        overflow: scroll;
+        flex-wrap: nowrap;
+        width: 850px;
+      }
+    }
+
 
     li {
       background-color: #f9f9f9;
@@ -33,6 +67,12 @@
       &.active {
         background-color: #282828;
         color: #fff;
+      }
+
+      @media (max-width:786px) {
+        & {
+          display: inline-block;
+        }
       }
     }
   }

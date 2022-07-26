@@ -14,10 +14,23 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+
+  @media (max-width:487px) {
+    & {
+      width: 90%;
+    }
+  }
 }
 
 .content {
   padding: 40px 0;
+
+  @media (max-width:350px) {
+    & {
+      padding: 0 0 20px 0;
+    }
+  }
+
 
   &__title {
     margin: 35px 0;
@@ -26,7 +39,13 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    @media (max-width:1267px) {
+      & {
+        justify-content: center;
+      }
+    }
   }
 
   &__top {
@@ -35,7 +54,7 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
 
-    @media (max-width:768px) {
+    @media (max-width:786px) {
       & {
         justify-content: center;
         align-items: center;

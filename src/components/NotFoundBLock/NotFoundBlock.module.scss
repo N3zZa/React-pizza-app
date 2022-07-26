@@ -1,0 +1,37 @@
+@import '../../scss/variables';
+
+.root {
+    text-align: center;
+}
+
+.button {
+    align-items: center;
+    padding: 15px 25px;
+    margin-top: 15px;
+    display: inline-block;
+    background-color: $orange;
+    border-radius: 30px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+    border: 1px solid transparent;
+    color: #fff;
+    font-size: 20px;
+
+    &:hover {
+        .arrow {
+            transform: rotate(180deg) translateX(5px);
+        }
+    }
+
+    &:hover {
+        background-color: darken($orange, 8%);
+    }
+}
+
+.arrow {
+    transform: rotate(180deg);
+    margin-right: 10px;
+    transition: .1s ease-in-out;
+}

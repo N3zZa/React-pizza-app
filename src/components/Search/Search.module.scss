@@ -1,0 +1,80 @@
+@import '../../scss/variables';
+
+.search {
+    width: 300px;
+    padding: 12px 28px 12px 40px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    font-size: 16px;
+
+    transition: all 0.15s ease-in-out;
+
+    &:focus {
+        border: 1px solid $black;
+        width: 350px;
+    }
+
+    @media (max-width:487px) {
+        & {
+            width: 250px;
+        }
+
+        &:focus {
+            width: 300px;
+        }
+    }
+
+    @media (max-width:357px) {
+        & {
+            width: 200px;
+        }
+
+        &:focus {
+            width: 250px;
+        }
+    }
+
+    @media (max-width:300px) {
+        & {
+            width: 200px;
+        }
+
+        &:focus {
+            width: 200px;
+        }
+    }
+}
+
+
+.searchImg {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    opacity: 0.25;
+    left: 10px;
+    top: 10px;
+}
+
+.searchBlock {
+    position: relative;
+    margin: 0 10px;
+
+    @media (max-width:786px) {
+        & {
+            margin: 20px 0;
+        }
+    }
+}
+
+.searchCleaner {
+    position: absolute;
+    right: 0;
+    width: 25px;
+    margin-right: 5px;
+    cursor: pointer;
+    opacity: 0.25;
+
+    &:hover {
+        opacity: 0.8
+    }
+}

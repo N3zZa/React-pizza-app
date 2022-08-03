@@ -1,18 +1,27 @@
 import React,{useState} from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import { setSortType } from "../redux/slices/filterSlice";
+  
 
-const Sort = ({ sortType, setSortType}) => {
-  const sortTypes = [
-    { name: "популярности(по возр.)", sortProperty: "-rating" },
+const sortTypes = [
     { name: "популярности(по убыв.)", sortProperty: "rating" },
-    { name: "цене(по возр.)", sortProperty: "-price" },
+    { name: "популярности(по возр.)", sortProperty: "-rating" },
     { name: "цене(по убыв.)", sortProperty: "price" },
-    { name: "алфавиту(по возр.)", sortProperty: "title" },
+    { name: "цене(по возр.)", sortProperty: "-price" },
     { name: "алфавиту(по убыв.)", sortProperty: "-title" },
+    { name: "алфавиту(по возр.)", sortProperty: "title" },
   ];
+
+
+const Sort = () => {
+  const dispatch = useDispatch();
+  const sortType = useSelector((state) => state.filterReducer.sortType);
+
+
   const [openedSort, setOpenedSort] = useState(false);
   
-  const onClickListItem = (i) => {
-    setSortType(i);
+  const onClickListItem = (obj) => {
+    dispatch(setSortType(obj));
     setOpenedSort(false);
   };
 

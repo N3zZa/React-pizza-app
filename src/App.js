@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 
 import Header from "./components/Header";
 import "./scss/app.scss";
@@ -7,6 +7,8 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 import { Route, Routes } from "react-router-dom";
+
+export const SearchContext = createContext()
 
 function App() {
   const [pizzaCount, setPizzaCount] = useState(0);
@@ -23,34 +25,29 @@ function App() {
   return (
     <div className="App">
       <div className="wrapper">
-        <Header
-          pizzaCount={pizzaCount}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
-        <Routes>
-          <Route
-            path=""
-            element={
-              <Home
-                addPizza={addPizza}
-                pizzaCount={pizzaCount}
-                searchValue={searchValue}
-              />
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                pizzaCount={pizzaCount}
-                addPizza={addPizza}
-                deletePizza={deletePizza}
-              />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <SearchContext.Provider
+          value={{
+            searchValue,
+            setSearchValue,
+            pizzaCount,
+            setPizzaCount,
+            addPizza,
+            deletePizza,
+          }}
+        >
+          <Header />
+          <Routes>
+            <Route
+              path=""
+              element={
+                <Home
+                />
+              }
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </SearchContext.Provider>
       </div>
     </div>
   );

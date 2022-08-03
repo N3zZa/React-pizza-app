@@ -1,0 +1,65 @@
+@import '../../scss/variables.scss';
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        display: inline-block;
+
+
+        a {
+            font-weight: 550;
+            margin: 0 3px;
+            cursor: pointer;
+            border: 1px solid $orange;
+            border-radius: 10px;
+            width: 45px;
+            height: 52px;
+            text-align: center;
+            display: inline-block;
+            line-height: 50px;
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Chrome/Safari/Opera */
+            -khtml-user-select: none;
+            /* Konqueror */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+
+            @media (max-width:300px) {
+                & {
+                    width: 35px;
+                    height: 47px;
+                    line-height: 47px;
+                }
+            }
+        }
+
+        a:hover {
+            background-color: $orange;
+            color: #fff;
+        }
+
+        a:active {
+            background-color: darken($orange, 8%);
+            transform: translateY(1px);
+            color: #fff;
+        }
+    }
+
+    :global {
+        .selected {
+
+            a {
+                background-color: $orange;
+                color: #fff;
+            }
+        }
+    }
+}

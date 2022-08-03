@@ -1,15 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { SearchContext } from '../../App';
 
 const PizzaBlock = ({
   title,
   price,
-  addPizza,
-  pizzaCount,
   imageUrl,
   sizes,
   types,
 }) => {
+  const {pizzaCount, addPizza} = useContext(SearchContext)
   const typeNames = ["тонкое", "традиционное"];
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(sizes[0]);

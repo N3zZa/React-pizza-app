@@ -1,9 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useState, useCallback } from "react";
 import styles from "./Search.module.scss"
 import {SearchContext} from "../../App"
+import debounce from 'lodash.debounce'
+
 
 const Search = () => {
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const [value, setValue] = useState("");
+  const { setSearchValue } = useContext(SearchContext);
+  const inputRef = useRef(null);
+
+  const onClickClearInput = () => {
+    setSearchValue("");
+    setValue("");
+    inputRef.current.focus();
+  };
+
+  const changeSearchValue = useCallback(
+    debounce((str) => {
+      setSearchValue(str);
+    }, 300),
+    [],
+  );
+
+  const onChangeInput = (e) => {
+    setValue(e.target.value);
+    changeSearchValue(e.target.value);
+  };
 
   return (
     <div className={styles.searchBlock}>
@@ -20,16 +42,17 @@ const Search = () => {
           id="XMLID_223_"
         />
       </svg>
-      <input    // контролируемый input
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+      <input
+        ref={inputRef}
+        value={value} // контролируемый input
+        onChange={onChangeInput}
         className={styles.search}
         type="text"
         placeholder="Найти пиццу..."
       />
-      {searchValue && (
+      {value && (
         <svg
-          onClick={() => setSearchValue("")}
+          onClick={onClickClearInput}
           className={styles.searchCleaner}
           height="48"
           viewBox="0 0 48 48"

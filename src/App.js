@@ -11,16 +11,9 @@ import { Route, Routes } from "react-router-dom";
 export const SearchContext = createContext()
 
 function App() {
-  const [pizzaCount, setPizzaCount] = useState(0);
   const [searchValue, setSearchValue] = useState('');
   
 
-   const addPizza = () => {
-     setPizzaCount(pizzaCount + 1);
-   };
-   const deletePizza = () => {
-    setPizzaCount(pizzaCount > 0 ? pizzaCount - 1 : pizzaCount);
-   }
 
   return (
     <div className="App">
@@ -29,10 +22,6 @@ function App() {
           value={{
             searchValue,
             setSearchValue,
-            pizzaCount,
-            setPizzaCount,
-            addPizza,
-            deletePizza,
           }}
         >
           <Header />

@@ -15,12 +15,13 @@ const Search = () => {
     inputRef.current.focus();
   };
 
+
   const changeSearchValue = useCallback(
     debounce((str) => {
       setSearchValue(str);
-    }, 300),
-    [],
-  );
+    }, 500),
+    []
+  )
 
   const onChangeInput = (e) => {
     setValue(e.target.value);

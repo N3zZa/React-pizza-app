@@ -12,6 +12,7 @@ import { SearchContext } from "../App";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   const { categoryId, sortType, pageCount } = useSelector(
     (state) => state.filterReducer
   );
@@ -19,11 +20,6 @@ const Home = () => {
 
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const isCategory = categoryId > 0 ? `category=${categoryId}` : "";
-  const sortBy = sortType.sortProperty.replace("-", "");
-  const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
-  const search = searchValue ? `&search=${searchValue}` : "";
 
   const onClickCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -35,29 +31,28 @@ const Home = () => {
 
   useEffect(() => {
     try {
+      
+      setIsLoading(true);
+      
+      const sortBy = sortType.sortProperty.replace("-", "");
+      const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
+      const category = categoryId > 0 ? `category=${categoryId}` : "";
+      const search = searchValue ? `search=${searchValue}` : "";
+      
       axios
-        .get(
-          `https://62d53c2115ad24cbf2c243ef.mockapi.io/items?page=${pageCount}&limit=4&${isCategory}&sortBy=${sortBy}&order=${order}${search}`
+      .get(
+        `https://62d53c2115ad24cbf2c243ef.mockapi.io/items?page=${pageCount}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
         )
         .then((res) => {
           setItems(res.data);
           setIsLoading(false);
         });
-      window.scrollTo(0, 100);
+        window.scrollTo(0, 100);
     } catch (error) {
       alert("Что-то пошло не так :(");
       console.error(error);
     }
-  }, [
-    categoryId,
-    sortType,
-    searchValue,
-    isCategory,
-    sortBy,
-    order,
-    search,
-    pageCount,
-  ]);
+  }, [categoryId, sortType, pageCount,searchValue]);
 
   const pizzas = items
     .filter((obj) =>
@@ -70,7 +65,7 @@ const Home = () => {
 
   return (
     <div className="content">
-      <div className="container">
+      <div className="container container_pizzas">
         <div className="content__top">
           <Categories categoryId={categoryId} setCategoryId={onClickCategory} />
           <Sort />

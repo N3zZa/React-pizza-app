@@ -11,9 +11,13 @@ function CartItem({ id, title, price, imageUrl, type, size, count }) {
   };
   
   const onClickMinus = () => {
-    dispatch(removePizzaCart(item));
+    if (count > 1) {
+      dispatch(removePizzaCart(item));
+    } else if (count === 1) {
+      dispatch(removePizza(item));
+    }
   };
-
+  
   const onClickPlus = () => {
     dispatch(addPizza(item));
   };
